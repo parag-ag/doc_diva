@@ -1,0 +1,24 @@
+<style>
+	.d1{
+		font-size: 40px;
+		display: inline-block;
+		color: white;
+		padding: 35px 10px;
+		background-color: rgb(155,155,155);
+		width: 40%;
+		text-align: center;
+		margin: 10px;
+	}
+	
+	.d1:hover{
+		background-color: black;
+	}
+</style>
+
+{% if doc %}
+	{% for d in doc %}
+		<a href="/appointment/{{ d.d_type }}/">  <span class="d1"> {{ d.d_type }} </span>  </a>
+	{% endfor %}
+{% else %}
+	<b style="font-size:40px; color:red;"> Sorry, No doctors available :( </b>
+{% endif %} 

@@ -1,0 +1,59 @@
+<style>
+	.t1{
+		font-size: 30px;
+		padding: 4px 50px;
+		margin: 1px;
+		background-color: rgb(200,200,200);
+	}
+	
+	.t2{
+		font-size: 20px;
+		padding: 4px 70px;
+		margin: 1px;
+		background-color: rgb(120,200,120);
+	}
+	
+	.t2:hover{
+		color: white;
+		background-color: black;
+	}
+	
+	.t3{
+		color: white;
+		text-decoration: None;
+		padding: 4px 35px;
+	}
+	
+	.t4{
+		color: white;
+		text-decoration: None;
+		padding: 4px 70px;
+		margin: 2px;
+	}
+</style>
+
+{% if card %}
+	<table>
+		<tr>
+			<th class='t1'>Name</th>
+			<th class='t1'>Location</th> 
+			<th class='t1'>Available Dates</th>
+			<th class='t1'>Working hours</th>
+			<th class='t1'>Book Your Appointment</th>
+			<th class='t1'> Current Status </th>
+		</tr>
+		{% for doctor in card %}
+			<tr class='t2'>
+				<th> <a href = "/appointment/booking/" class='t3'>   {{ doctor.name }} : </a> </th>  
+				<th> {{ doctor.location }}</th> 
+				<th> {{ doctor.available_dates }}</th>	
+				<th> {{ doctor.works_from }} -> {{ doctor.works_upto }}  </th>
+				<th> <a href="/appointment/booking/" class='t4'> Book Here !</th> </a>
+				<th> {{ doctor.curr_status }}/{{ doctor.max_booking }} </th>
+			</tr>
+		{% endfor %}
+	</table>
+	
+{% else %}
+	<h1 style="color:red;"> Sorry :(   ,  No Cardiologist available. </h1>
+{% endif %}
